@@ -6,6 +6,9 @@ import java.util.logging.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
+import es.gob.afirma.report.fail.tests.ExtractFailTest;
+import es.gob.afirma.report.fail.tests.StoreBean;
+
 public final class SearchErrorJUnit {
 
 	static final String ID = "id"; //$NON-NLS-1$
