@@ -182,7 +182,7 @@ final class Desensobrado extends JPanel {
                     // SignedAndEnvelopedData
                 }
                 else if (CMSHelper.isCMSValid(envelopData, AOSignConstants.CMS_CONTENTTYPE_SIGNEDANDENVELOPEDDATA)) {
-					recoveredData = CMSDecipherSignedAndEnvelopedData.dechiperSignedAndEnvelopData(envelopData, privateKeyEntry);
+                	recoveredData = (new CMSDecipherSignedAndEnvelopedData(envelopData)).decipher(privateKeyEntry);
                     // AuthenticatedAndEnvelopedData
                 }
                 else if (CMSHelper.isCMSValid(envelopData, AOSignConstants.CMS_CONTENTTYPE_AUTHENVELOPEDDATA)) {

@@ -11,7 +11,6 @@
 		<groupId>es.gob.afirma</groupId>
 		<artifactId>afirma-client-base</artifactId>
 		<version>3.3.2-SNAPSHOT</version>
-		<relativePath>../../../../pom.xml</relativePath>
 	</parent>
 	
 	<properties>
