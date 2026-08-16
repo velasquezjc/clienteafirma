@@ -45,8 +45,8 @@ final class ConfiguratorWindows implements Configurator {
 
 	static final Logger LOGGER = Logger.getLogger("es.gob.afirma"); //$NON-NLS-1$
 
-	private static final String KS_FILENAME = "autofirma.pfx"; //$NON-NLS-1$
-	private static final String KS_PASSWORD = "654321"; //$NON-NLS-1$
+	private static final String KS_FILENAME = "autofirmaSiGIRH.pfx"; //$NON-NLS-1$
+	private static final String KS_PASSWORD = "calamuchita"; //$NON-NLS-1$
 	private static final String CA_CERT_FILENAME = "Autofirma_ROOT.cer"; //$NON-NLS-1$
 
 	/** M&aacute;ximo n&uacute;mero de segundos que se esperar&aacute; a que finalicen los scripts. */

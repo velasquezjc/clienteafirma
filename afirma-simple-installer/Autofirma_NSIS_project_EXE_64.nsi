@@ -28,11 +28,11 @@ SetCompressor lzma
 
 VIProductVersion "${FILE_VERSION}"
 VIFileVersion "${FILE_VERSION}"
-VIAddVersionKey "ProductName" "Autofirma"
+VIAddVersionKey "ProductName" "Autofirma SiGIRH"
 VIAddVersionKey "ProductVersion" "${VERSION}"
 VIAddVersionKey "FileVersion" "${VERSION}"
-VIAddVersionKey "LegalCopyright" "(C) Gobierno de España"
-VIAddVersionKey "FileDescription" "Autofirma (64 bits)"
+VIAddVersionKey "LegalCopyright" "Basado en Autofirma(C) Gobierno de España"
+VIAddVersionKey "FileDescription" "Autofirma SiGIRH(64 bits)"
 
 ;--------------------------------
 ;Paginas del instalador
@@ -151,7 +151,7 @@ FunctionEnd
 ; Configuration General ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Nuestro instalador se llamara si la version fuera la 1.0: Ejemplo-1.0.exe
-OutFile Autofirma64/Autofirma_64_v1_10_installer.exe
+OutFile Autofirma64/AutofirmaSiGIRH_64_v1_10_installer.exe
 
 ;Aqui comprobamos que en la version Inglesa se muestra correctamente el mensaje:
 ;Welcome to the $Name Setup Wizard
@@ -159,7 +159,7 @@ OutFile Autofirma64/Autofirma_64_v1_10_installer.exe
 ;la frase en espanol mas larga:
 ; Bienvenido al Asistente de Instalacion de Aplicacion $Name
 ; no se ve el contenido de la variable $Name si el tamano es muy grande
-Name "Autofirma"
+Name "Autofirma SiGIRH"
 Caption $(INST_CAPTION)
 Icon ic_launcher.ico
 
@@ -176,7 +176,7 @@ Var PATH
 
 ;Indicamos cual sera el directorio por defecto donde instalaremos nuestra
 ;aplicacion, el usuario puede cambiar este valor en tiempo de ejecucion.
-InstallDir "$PROGRAMFILES64\Autofirma"
+InstallDir "$PROGRAMFILES64\AutofirmaSiGIRH"
 
 ;Mensaje que mostraremos para indicarle al usuario que seleccione un directorio
 DirText $(CHOOSE_DIR)
@@ -205,11 +205,11 @@ UninstallText $(UNINST_CAPTION)
 ; Instalacion de la aplicacion y configuracion de la misma            ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-Section "Autofirma" sPrograma
+Section "AutofirmaSiGIRH" sPrograma
 
 	; Hacemos esta seccion de solo lectura para que no la desactiven
 	SectionIn RO
-	StrCpy $PATH "Autofirma"
+	StrCpy $PATH "AutofirmaSiGIRH"
 
 	;Comprobamos que el sistema sea de 64bits y salimos en caso contrario
 	System::Call 'kernel32::GetCurrentProcess()i.r0'
@@ -251,7 +251,9 @@ Section "Autofirma" sPrograma
 	SetOutPath $INSTDIR\$PATH
 	
 	;Copiamos todos los ficheros que componen nuestra aplicacion
-	File  Autofirma64\Autofirma.exe
+	;File  Autofirma64\Autofirma.exe
+	
+	File  Autofirma64\AutofirmaSiGIRH.exe
 	File  Autofirma64\AutofirmaConfigurador.exe
 	File  Autofirma64\AutofirmaCommandLine.exe
 	File  license\licencia_es.txt
@@ -283,24 +285,24 @@ Section "Autofirma" sPrograma
 
 	;Si se ha configurado, creamos un acceso directo en el escritorio
 	${If} $Shorcut_Integration_Checkbox_State == 1
-		CreateShortCut "$DESKTOP\Autofirma.lnk" "$INSTDIR\$PATH\Autofirma.exe"
+		CreateShortCut "$DESKTOP\AutofirmaSiGIRH.lnk" "$INSTDIR\$PATH\AutofirmaSiGIRH.exe"
 	${Endif}
 
 	;Si se ha configurado, creamos el grupo de accesos en el menu inicio
 	${If} $StartMenu_Integration_Checkbox_State == 1
-		CreateDirectory "$SMPROGRAMS\Autofirma"
-		CreateShortCut "$SMPROGRAMS\Autofirma\Autofirma.lnk" "$INSTDIR\$PATH\Autofirma.exe"
-		CreateShortCut "$SMPROGRAMS\Autofirma\Desinstalar.lnk" "$INSTDIR\uninstall.exe"
+		CreateDirectory "$SMPROGRAMS\AutofirmaSiGIRH"
+		CreateShortCut "$SMPROGRAMS\AutofirmaSiGIRH\AutofirmaSiGIRH.lnk" "$INSTDIR\$PATH\AutofirmaSiGIRH.exe"
+		CreateShortCut "$SMPROGRAMS\AutofirmaSiGIRH\Desinstalar.lnk" "$INSTDIR\uninstall.exe"
 	${Endif}
 
 	;Anade una entrada en la lista de "Program and Features"
-	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "DisplayName" "Autofirma"
+	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "DisplayName" "AutofirmaSiGIRH"
 	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "UninstallString" "$INSTDIR\uninstall.exe"
-	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "DisplayIcon" "$INSTDIR\$PATH\Autofirma.exe"
+	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "DisplayIcon" "$INSTDIR\$PATH\AutofirmaSiGIRHv.exe"
 	WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "NoModify" "1"
 	WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "NoRepair" "1"
 	WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "EstimatedSize" "100000"
-	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "Publisher" "Gobierno de España"
+	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "Publisher" "Gobierno de Argentina"
 	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH" "DisplayVersion" "${VERSION}"
 
 	WriteUninstaller "$INSTDIR\uninstall.exe"
@@ -311,28 +313,28 @@ Section "Autofirma" sPrograma
 	;Registro
 	;CascadeAfirma.reg
 	WriteRegStr HKEY_CLASSES_ROOT "*\shell\afirma.sign" "" $(SIGN_WITH_AUTOFIRMA)
-	WriteRegStr HKEY_CLASSES_ROOT "*\shell\afirma.sign" "Icon" "$INSTDIR\$PATH\Autofirma.exe"
-	WriteRegStr HKEY_CLASSES_ROOT "*\shell\afirma.sign\command" "" '$INSTDIR\$PATH\Autofirma.exe sign -gui -i "%1"'
+	WriteRegStr HKEY_CLASSES_ROOT "*\shell\afirma.sign" "Icon" "$INSTDIR\$PATH\AutofirmaSiGIRH.exe"
+	WriteRegStr HKEY_CLASSES_ROOT "*\shell\afirma.sign\command" "" '$INSTDIR\$PATH\AutofirmaSiGIRH.exe sign -gui -i "%1"'
 
 	;Verify
 	; .csig
 	WriteRegStr HKEY_CLASSES_ROOT ".csig" "" $(BINARY_SIGNATURE)
 	WriteRegStr HKEY_CLASSES_ROOT ".csig\DefaultIcon" "" "$INSTDIR\$PATH\ic_firmar.ico"
 	WriteRegStr HKEY_CLASSES_ROOT ".csig\shell\Verify" "" $(VERIFY_WITH_AUTOFIRMA)
-	WriteRegStr HKEY_CLASSES_ROOT ".csig\shell\Verify\command" "" '$INSTDIR\$PATH\Autofirma.exe verify -gui -i "%1"'
+	WriteRegStr HKEY_CLASSES_ROOT ".csig\shell\Verify\command" "" '$INSTDIR\$PATH\AutofirmaSiGIRH.exe verify -gui -i "%1"'
 
 	;Verify
 	; .xsig
 	WriteRegStr HKEY_CLASSES_ROOT ".xsig" "" $(XADES_SIGNATURE)
 	WriteRegStr HKEY_CLASSES_ROOT ".xsig\DefaultIcon" "" "$INSTDIR\$PATH\ic_firmar.ico"
 	WriteRegStr HKEY_CLASSES_ROOT ".xsig\shell\Verify" "" $(VERIFY_WITH_AUTOFIRMA)
-	WriteRegStr HKEY_CLASSES_ROOT ".xsig\shell\Verify\command" "" '$INSTDIR\$PATH\Autofirma.exe verify -gui -i "%1"'
+	WriteRegStr HKEY_CLASSES_ROOT ".xsig\shell\Verify\command" "" '$INSTDIR\$PATH\AutofirmaSiGIRH.exe verify -gui -i "%1"'
 	
 	;Protocolo afirma
 	WriteRegStr HKEY_CLASSES_ROOT "afirma" "" "URL:Afirma Protocol"
 	WriteRegStr HKEY_CLASSES_ROOT "afirma\DefaultIcon" "" "$INSTDIR\$PATH\ic_firmar.ico"
 	WriteRegStr HKEY_CLASSES_ROOT "afirma" "URL Protocol" ""
-	WriteRegStr HKEY_CLASSES_ROOT "afirma\shell\open\command" "" '$INSTDIR\$PATH\Autofirma.exe "%1"'
+	WriteRegStr HKEY_CLASSES_ROOT "afirma\shell\open\command" "" '$INSTDIR\$PATH\AutofirmaSiGIRH.exe "%1"'
 
 	; Eliminamos los certificados generados en caso de que existan por una instalacion previa
 	IfFileExists "$INSTDIR\$PATH\Autofirma_ROOT.cer" 0 +2
@@ -393,7 +395,7 @@ SectionEnd
 
 Function .onInit
 
-	StrCpy $PATH "Autofirma"
+	StrCpy $PATH "AutofirmaSiGIRH"
 
 	; Establecemos los textos del dialogo de seleccion de idioma
 	!define MUI_LANGDLL_WINDOWTITLE "Instalador de $PATH"
@@ -885,7 +887,7 @@ FunctionEnd
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Section "uninstall"
-	StrCpy $PATH "Autofirma"
+	StrCpy $PATH "AutofirmaSiGIRH"
 	SetShellVarContext all
 
 	; ==== Desinstalador EXE - INICIO ====
@@ -952,7 +954,7 @@ Section "uninstall"
 
 	PostValidacion:
 	;Borrar accesos directos del escritorio y menu inicio
-	Delete "$DESKTOP\Autofirma.lnk"
+	Delete "$DESKTOP\AutofirmaSiGIRH.lnk"
 	RMDir /r $SMPROGRAMS\$PATH
 	
 	;Eliminamos las entradas de registro en la vista de 64 bits
@@ -1051,8 +1053,8 @@ Function RemoveOldVersions
 
 		; Si hemos encontrado el registro, obtenemos la cadena de desinstalacion, preparamos las variables y dejamos de repetir el bucle
 		StrCmp $4 "REG_SZ" 0 searchAutofirmaLoop
-		StrCmp $3 "AutoFirma" +2 0
-		StrCmp $3 "Autofirma" 0 searchAutofirmaLoop
+		StrCmp $3 "AutoFirmaSiGIRH" +2 0
+		StrCmp $3 "AutofirmaSiGIRH" 0 searchAutofirmaLoop
 		ReadRegStr $R0 HKLM $1 "UninstallString"
 		
 		close:
@@ -1060,8 +1062,8 @@ Function RemoveOldVersions
 		${registry::Unload}
 
 		; Si se encontro Autofirma, se pide desinstalar
-		StrCmp $3 "AutoFirma" +2 0
-		StrCmp $3 "Autofirma" 0 End
+		StrCmp $3 "AutoFirmaSiGIRH" +2 0
+		StrCmp $3 "AutofirmaSiGIRH" 0 End
 		; Informamos de que existe una version anterior, ofrecemos el eliminarla y cerramos el
 		; instalador si no se quiere desinstalar
 		MessageBox MB_YESNO $(UNINSTALL_OLDER) /SD IDYES IDNO Exit

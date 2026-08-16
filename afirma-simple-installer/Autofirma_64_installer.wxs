@@ -3,9 +3,9 @@
    <?define VersionNumber="1.10" ?>
    <?define Platform="x64" ?>
    <?define ProjectDir ="" ?>
-   <?define ProjectName ="Autofirma" ?>
-   <?define ManufacturerName = "Gobierno de España" ?>
-   <?define UpgradeCode="{A6D90EBF-E089-4281-9269-AE5D20BA74D2}" ?>
+   <?define ProjectName ="Autofirma SiGIRH Edition" ?>
+   <?define ManufacturerName = "Gobierno de Argentina" ?>
+   <?define UpgradeCode="{7e091bd1-9226-41bb-b6f6-47313036c61c}" ?>
    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
 	  
    <Product Codepage="1252" Id="*" Name="$(var.ProjectName)" Language="1033" Version="$(var.VersionNumber)" Manufacturer="$(var.ManufacturerName)" UpgradeCode="$(var.UpgradeCode)" >

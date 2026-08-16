@@ -977,6 +977,8 @@ public final class SimpleAfirma implements PropertyChangeListener, WindowListene
     		// Lo primero es comprobar que no se encuentre ya abierta.
     		else if (!isSimpleAfirmaAlreadyRunning()) {
 
+    			//bloqueo el modo escritorio
+    			/*
     			LOGGER.info("Apertura como herramienta de escritorio"); //$NON-NLS-1$
     			ProgressInfoDialogManager.showProgressDialog(SimpleAfirmaMessages.getString("ProgressInfoDialog.6")); //$NON-NLS-1$
 
@@ -1058,7 +1060,13 @@ public final class SimpleAfirma implements PropertyChangeListener, WindowListene
 
 				// Comprobamos si el almacen de confianza con el certificado SSL esta instalado correctamente
     			final CheckTrustKeyStoreTask checkTrustStoreTask = new CheckTrustKeyStoreTask(saf.getMainFrame());
-    			checkTrustStoreTask.execute();
+    			checkTrustStoreTask.execute();*/
+                LOGGER.warning("La ejecucion manual de la interfaz grafica esta deshabilitada.");
+    			
+    			// Cerramos los hilos activos (como el del proxy o SSL) y terminamos el proceso limpiamente
+    			forceCloseApplication(0);
+    			return;
+    			
 
 			} else {
 				LOGGER.log(Level.WARNING, "La aplicacion ya se encuentra activa en otra ventana. Se cerrara esta instancia"); //$NON-NLS-1$

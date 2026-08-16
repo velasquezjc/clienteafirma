@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>jar\autofirma.jar</jar>
-  <outfile>Autofirma64\Autofirma.exe</outfile>
+  <jar>jar\afirma-ui-simpleafirma-1.9.1.jar</jar>
+  <outfile>Autofirma64\AutofirmaSiGIRH.exe</outfile>
   <errTitle>Error: Se ha superado el tiempo de espera antes de recibir peticiones.</errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -31,14 +31,14 @@
   <versionInfo>
     <fileVersion>1.10.0.0</fileVersion>
     <txtFileVersion>1.10</txtFileVersion>
-    <fileDescription>Autofirma</fileDescription>
-    <copyright>Gobierno de España</copyright>
+    <fileDescription>AutofirmaSiGIRH</fileDescription>
+    <copyright>Gobierno de Argentina</copyright>
     <productVersion>1.10.0.0</productVersion>
     <txtProductVersion>1.10</txtProductVersion>
-    <productName>Autofirma</productName>
-    <companyName>Gobierno de España</companyName>
-    <internalName>Autofirma</internalName>
-    <originalFilename>Autofirma.exe</originalFilename>
+    <productName>AutofirmaSiGIRH</productName>
+    <companyName>Gobierno de Argentina</companyName>
+    <internalName>AutofirmaSiGIRH</internalName>
+    <originalFilename>AutofirmaSiGIRH.exe</originalFilename>
     <trademarks></trademarks>
     <language>CASTILIAN_SPANISH</language>
   </versionInfo>

@@ -17,7 +17,9 @@ set PLUGINS_SRC=%SCRIPT_DIR%plugins
 set LANGUAGES_SRC=%SCRIPT_DIR%Contrib\Language Files
 
 :: Rutas de destino
-set NSIS=C:\Program Files (x86)\NSIS
+::set NSIS=C:\Program Files (x86)\NSIS
+set NSIS=E:\Mis programas\NSIS
+
 set PLUGIN_DEST=%NSIS%\Plugins\x86-unicode
 set INCLUDE_DEST=%NSIS%\Include
 set LANG_DEST=%NSIS%\Contrib\Language files
